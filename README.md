@@ -1,4 +1,4 @@
-# Analyzing Jakarta's Air Quality with Openweather's Air Pollution
+# Analyzing Balikpapan Air Quality with Openweather's Air Pollution
 
 ## Prologue
 This initiative leverages the Air Pollution API offered by Openweather to provide predictions using the data from the API. The primary objective is to create predictions using a Machine Learning Model based on the Openweather air pollution API. The plan involves deploying an inference script that fetches data from Openweather and conducts predictions. The inference script will be hosted on Heroku, making use of Heroku pipelines. To mitigate the cost associated with real-time data streaming, data retrieval will occur at a 24-hour interval.
