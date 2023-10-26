@@ -20,7 +20,7 @@ def processdata(df):
 
     return df
 
-api_key = '13378b0d1f786e1b964691e808b06e92'
+api_key = 'your_api_key'
 
 url=f'http://api.openweathermap.org/data/2.5/air_pollution?lat=-1.2676&lon=116.8270&appid={api_key}'
 

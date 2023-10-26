@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 
 # Replace 'your_api_key' with the API key you've been provided
-api_key = '13378b0d1f786e1b964691e808b06e92'
+api_key = 'your_api_key'
 
 # Define the start and end dates as Unix timestamps
 start_date = datetime(2019, 1, 1, 0, 0).timestamp()  # January 1, 2019

@@ -16,7 +16,7 @@ request_data = {
 }
 
 # Define the API key
-api_key = 'AIzaSyBh7EFE14EfrBZfab_fcXXZoOJlRuCgJRM'
+api_key = 'your_api_key'
 
 # Define the API endpoint
 url = 'https://airquality.googleapis.com/v1/currentConditions:lookup?key=' + api_key

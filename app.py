@@ -24,7 +24,7 @@ def processdata(df):
 @app.post("/predict")
 async def predict_air_quality():
     api_key = os.environ.get('OPENWEATHER_API_KEY')
-    url = f'http://api.openweathermap.org/data/2.5/air_pollution?lat=-6.2088&lon=106.8456&appid={api_key}'
+    url = f'http://api.openweathermap.org/data/2.5/air_pollution?lat=-1.2676&lon=116.8270&appid={api_key}'
     response = requests.get(url)
 
     # Check if the request was successful (status code 200)
