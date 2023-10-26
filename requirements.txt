@@ -1,0 +1,14 @@
+click
+Sphinx
+coverage
+awscli>=1.27.132,<2.0.0
+flake8
+joblib
+python-dotenv>=0.5.1
+pandas
+numpy
+scikit-learn==1.2.2
+fastapi==0.104.0
+uvicorn==0.13.4
+python-multipart
+xgboost

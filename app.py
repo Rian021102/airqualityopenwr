@@ -4,7 +4,7 @@ import numpy as np
 import requests
 from fastapi import FastAPI
 import os
-
+import joblib
 app = FastAPI()
 
 def processdata(df):
@@ -23,7 +23,7 @@ def processdata(df):
 
 @app.post("/predict")
 async def predict_air_quality():
-    api_key = '13378b0d1f786e1b964691e808b06e92'
+    api_key = os.environ.get('OPENWEATHER_API_KEY')
     url = f'http://api.openweathermap.org/data/2.5/air_pollution?lat=-6.2088&lon=106.8456&appid={api_key}'
     response = requests.get(url)
 
@@ -40,7 +40,7 @@ async def predict_air_quality():
         df = processdata(df)
 
         # Load the model
-        model = pickle.load(open('/Users/rianrachmanto/pypro/project/BalikpapanAirQ/model/model.pkl', 'rb'))
+        model = model = joblib.load("model.pkl")
 
         # Make predictions
         predictions = model.predict(df)
@@ -65,4 +65,4 @@ if __name__ == "__main__":
     import uvicorn
 
     # Use uvicorn to run the FastAPI application on 127.0.0.1 and port 8000
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run("app:app", host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
