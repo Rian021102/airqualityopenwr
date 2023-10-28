@@ -7,6 +7,7 @@ import os
 import joblib
 import pandas_gbq
 import json
+from google.oauth2 import service_account
 
 app = FastAPI()
 
@@ -34,9 +35,12 @@ async def predict_air_quality():
     # Ensure that the GOOGLE_CREDENTIALS environment variable is set
     if "GOOGLE_CREDENTIALS" not in os.environ:
         return {"error": "GOOGLE_CREDENTIALS environment variable not set."}
-    
+
     # Parse the Google Service Account JSON key
     google_credentials = json.loads(os.environ["GOOGLE_CREDENTIALS"])
+
+    # Configure the credentials using google-auth
+    credentials = service_account.Credentials.from_service_account_info(google_credentials)
     
     url = f'http://api.openweathermap.org/data/2.5/air_pollution?lat=-1.2676&lon=116.8270&appid={api_key}'
     response = requests.get(url)
@@ -90,7 +94,7 @@ async def predict_air_quality():
         ]
 
         # Load the DataFrame into BigQuery with "append" mode
-        pandas_gbq.to_gbq(df, table_id, project_id, if_exists='append', table_schema=table_schema, credentials=google_credentials)
+        pandas_gbq.to_gbq(df, table_id, project_id, if_exists='append', table_schema=table_schema, credentials=credentials)
 
         return df.to_dict(orient='records')
 
