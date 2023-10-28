@@ -56,7 +56,7 @@ async def predict_air_quality():
         df2.drop(columns=['dt'], axis=1, inplace=True)
 
         # Load the model
-        model = model = joblib.load("/Users/rianrachmanto/pypro/project/BalikpapanAirQ/model/model.pkl")
+        model = model = joblib.load("model.pkl")
 
         # Make predictions
         predictions = model.predict(df2)
