@@ -3,11 +3,11 @@ import pandas as pd
 from datetime import datetime
 
 # Replace 'your_api_key' with the API key you've been provided
-api_key = 'your_api_key'
+api_key = 'e86609410bde86678446df12a768d48e'
 
 # Define the start and end dates as Unix timestamps
 start_date = datetime(2019, 1, 1, 0, 0).timestamp()  # January 1, 2019
-end_date = datetime(2023, 11, 24, 23, 59).timestamp()  # September 30, 2023
+end_date = datetime(2023, 11, 27, 23, 59).timestamp()  # September 30, 2023
 
 # Replace the latitude and longitude with Jakarta's coordinates
 url = f'http://api.openweathermap.org/data/2.5/air_pollution/history?lat=-1.2676&lon=116.8270&start={int(start_date)}&end={int(end_date)}&appid={api_key}'

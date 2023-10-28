@@ -16,11 +16,11 @@ def processdata(df):
     df.drop(columns=['main.aqi'], axis=1, inplace=True)
 
     #remove no, pm10, dt and nh3
-    df = df.drop(columns=['no','pm10','dt','nh3'], axis=1, inplace=False)
+    df = df.drop(columns=['no','pm10','nh3'], axis=1, inplace=False)
 
     return df
 
-api_key = 'your_api_key'
+api_key = '13378b0d1f786e1b964691e808b06e92'
 
 url=f'http://api.openweathermap.org/data/2.5/air_pollution?lat=-1.2676&lon=116.8270&appid={api_key}'
 
@@ -33,17 +33,19 @@ if response.status_code == 200:
     # Transform the JSON data into a DataFrame
     df = pd.json_normalize(data['list'])
 
-    # Convert the dt column into a datetime object
+    # Convert the dt column into a datetime
     df['dt'] = pd.to_datetime(df['dt'], unit='s')
     
     df = processdata(df)
+    df2=df.copy()
+    df2.drop(columns=['dt'], axis=1, inplace=True)
     
     # Load the model
 
     model = pickle.load(open('/Users/rianrachmanto/pypro/project/BalikpapanAirQ/model/model.pkl', 'rb'))
 
     # Make predictions
-    predictions = model.predict(df)
+    predictions = model.predict(df2)
 
     #if prediction 0,1,2,3,4 then replace with Good, Fine, Medium, Poor, Very Poor
     if predictions == 0:

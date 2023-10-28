@@ -24,7 +24,7 @@ def train_xgb(X_train,y_train,X_test,y_test):
     print(classification_report(y_test,y_pred))
 
     #save model
-    with open('/Users/rianrachmanto/pypro/project/jktairquality/model/model.pkl', 'wb') as f:
+    with open('/Users/rianrachmanto/pypro/project/BalikpapanAirQ/model/model.pkl', 'wb') as f:
         pickle.dump(model, f)
 
     return model
